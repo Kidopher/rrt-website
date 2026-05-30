@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>RRT System Map</title>
+
+<style>
+body { margin:0; font-family:Arial; background:#f3f4f6; }
+
+header {
+    background:#0039a6;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+
+nav {
+    background:white;
+    text-align:center;
+    padding:10px;
+    border-bottom:1px solid #ddd;
+}
+
+nav a {
+    margin:0 10px;
+    text-decoration:none;
+    color:#0039a6;
+    font-weight:bold;
+}
+
+.map {
+    max-width:900px;
+    margin:20px auto;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    border:1px solid #ddd;
+}
+
+/* fake network map */
+.line {
+    height:4px;
+    background:#0039a6;
+    margin:20px 0;
+    position:relative;
+}
+
+.stop {
+    width:12px;
+    height:12px;
+    background:white;
+    border:3px solid #0039a6;
+    border-radius:50%;
+    position:absolute;
+    top:-6px;
+}
+
+.stop1 { left:10%; }
+.stop2 { left:40%; }
+.stop3 { left:70%; }
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>RRT System Map</h1>
+</header>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="routes.html">Routes</a>
+<a href="alerts.html">Alerts</a>
+<a href="map.html">Map</a>
+</nav>
+
+<div class="map">
+
+<h3>Route 1 — Downtown Line</h3>
+<div class="line">
+<div class="stop stop1"></div>
+<div class="stop stop2"></div>
+<div class="stop stop3"></div>
+</div>
+
+<p>Downtown → Central → Riverside → North End</p>
+
+</div>
+
+</body>
+</html>
