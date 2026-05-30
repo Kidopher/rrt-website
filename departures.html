@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>RRT Departure Board</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: "Courier New", monospace;
+    background: #0b0f19;
+    color: #00ff9d;
+}
+
+/* HEADER */
+header {
+    background: #111827;
+    color: #00ff9d;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid #00ff9d;
+}
+
+header h1 {
+    margin: 0;
+    letter-spacing: 2px;
+}
+
+/* CLOCK */
+.clock {
+    font-size: 14px;
+    margin-top: 5px;
+    opacity: 0.8;
+}
+
+/* BOARD */
+.board {
+    max-width: 1000px;
+    margin: 20px auto;
+    border: 2px solid #00ff9d;
+    padding: 10px;
+}
+
+/* ROWS */
+.row {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr 1fr;
+    padding: 12px;
+    border-bottom: 1px solid rgba(0,255,157,0.2);
+}
+
+.row.header {
+    font-weight: bold;
+    border-bottom: 2px solid #00ff9d;
+}
+
+.status {
+    color: #fbbf24;
+}
+
+.delayed {
+    color: #f87171;
+}
+
+.on-time {
+    color: #00ff9d;
+}
+
+/* blinking effect like real boards */
+.blink {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0.4; }
+}
+
+/* NAV */
+nav {
+    text-align: center;
+    margin-top: 10px;
+}
+
+nav a {
+    color: #00ff9d;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>RRT DEPARTURE BOARD</h1>
+<div class="clock" id="clock">--:--:--</div>
+</header>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="routes.html">Routes</a>
+<a href="alerts.html">Alerts</a>
+<a href="departures.html">Departures</a>
+</nav>
+
+<div class="board">
+
+<div class="row header">
+<div>Route</div>
+<div>Destination</div>
+<div>Departs</div>
+<div>Status</div>
+</div>
+
+<div class="row">
+<div>1</div>
+<div>Downtown Loop</div>
+<div>3 min</div>
+<div class="on-time">On Time</div>
+</div>
+
+<div class="row">
+<div>2</div>
+<div>Riverside Express</div>
+<div class="blink">6 min</div>
+<div class="status">Boarding</div>
+</div>
+
+<div class="row">
+<div>3</div>
+<div>North Connector</div>
+<div>12 min</div>
+<div class="on-time">On Time</div>
+</div>
+
+<div class="row">
+<div>1</div>
+<div>Downtown Loop</div>
+<div>18 min</div>
+<div class="delayed">Delayed</div>
+</div>
+
+</div>
+
+<script>
+function updateClock() {
+    const now = new Date();
+    document.getElementById("clock").innerText =
+        now.toLocaleTimeString();
+}
+
+setInterval(updateClock, 1000);
+updateClock();
+</script>
+
+</body>
+</html>
