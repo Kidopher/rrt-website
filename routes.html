@@ -5,10 +5,13 @@
 <title>RRT Routes</title>
 
 <style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #eef2f7;
+body { margin: 0; font-family: Arial; background: #eef2f7; }
+
+.topbar {
+    background: #111827;
+    color: white;
+    padding: 6px 15px;
+    font-size: 12px;
 }
 
 header {
@@ -26,14 +29,20 @@ nav {
 }
 
 nav a {
-    margin: 0 12px;
+    margin: 0 10px;
     text-decoration: none;
     color: #1d4ed8;
     font-weight: bold;
+    padding: 6px 10px;
+    border-radius: 4px;
+}
+
+nav a:hover {
+    background: #e0e7ff;
 }
 
 .container {
-    max-width: 800px;
+    max-width: 900px;
     margin: 20px auto;
     padding: 10px;
 }
@@ -41,30 +50,26 @@ nav a {
 .card {
     background: white;
     padding: 15px;
-    margin-bottom: 12px;
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 5px;
 }
 
 .route {
     display: flex;
     justify-content: space-between;
-    padding: 8px 0;
+    padding: 10px;
     border-bottom: 1px solid #eee;
 }
-
-.route:last-child {
-    border-bottom: none;
-}
 </style>
-
 </head>
 
 <body>
 
+<div class="topbar">RRT Routes System</div>
+
 <header>
-<h1>RRT Routes</h1>
-<p>Route Information</p>
+<h1>Routes</h1>
+<p>Network Overview</p>
 </header>
 
 <nav>
@@ -76,23 +81,9 @@ nav a {
 <div class="container">
 
 <div class="card">
-<h2>Active Routes</h2>
-
-<div class="route">
-<span>Route 1</span>
-<span>Downtown Loop</span>
-</div>
-
-<div class="route">
-<span>Route 2</span>
-<span>Riverside Express</span>
-</div>
-
-<div class="route">
-<span>Route 3</span>
-<span>North Connector</span>
-</div>
-
+<div class="route"><span>Route 1</span><span>Downtown Loop</span></div>
+<div class="route"><span>Route 2</span><span>Riverside Express</span></div>
+<div class="route"><span>Route 3</span><span>North Connector</span></div>
 </div>
 
 </div>
