@@ -5,7 +5,11 @@
 <title>RRT Alerts</title>
 
 <style>
-body { margin: 0; font-family: Arial; background: #eef2f7; }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #eef2f7;
+}
 
 .topbar {
     background: #111827;
@@ -47,22 +51,43 @@ nav a:hover {
     padding: 10px;
 }
 
-.card {
+/* dropdown */
+select {
+    padding: 8px;
+    margin-bottom: 15px;
+}
+
+/* alert cards */
+.alert {
     background: white;
     padding: 15px;
+    margin-bottom: 10px;
     border: 1px solid #ddd;
-    border-left: 6px solid #dc2626;
+    border-left: 6px solid;
+}
+
+.alert.delay {
+    border-left-color: #f59e0b;
+}
+
+.alert.disruption {
+    border-left-color: #dc2626;
+}
+
+.alert.info {
+    border-left-color: #2563eb;
 }
 </style>
+
 </head>
 
 <body>
 
-<div class="topbar">Service Alerts</div>
+<div class="topbar">RRT Service Alerts</div>
 
 <header>
-<h1>Alerts</h1>
-<p>System Notifications</p>
+<h1>Service Alerts</h1>
+<p>Current System Notices</p>
 </header>
 
 <nav>
@@ -73,11 +98,47 @@ nav a:hover {
 
 <div class="container">
 
-<div class="card">
+<!-- dropdown -->
+<select id="filter" onchange="filterAlerts()">
+    <option value="all">All Alerts</option>
+    <option value="delay">Delays</option>
+    <option value="disruption">Disruptions</option>
+    <option value="info">Info</option>
+</select>
+
+<!-- alerts -->
+<div class="alert info" data-type="info">
 No current disruptions.
 </div>
 
+<div class="alert delay" data-type="delay">
+Route 2 may experience minor delays due to traffic.
 </div>
+
+<div class="alert disruption" data-type="disruption">
+Route 3 service temporarily suspended.
+</div>
+
+</div>
+
+<script>
+function filterAlerts() {
+    let value = document.getElementById("filter").value;
+    let alerts = document.querySelectorAll(".alert");
+
+    alerts.forEach(alert => {
+        if (value === "all") {
+            alert.style.display = "block";
+        } else {
+            if (alert.dataset.type === value) {
+                alert.style.display = "block";
+            } else {
+                alert.style.display = "none";
+            }
+        }
+    });
+}
+</script>
 
 </body>
 </html>
