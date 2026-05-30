@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>RRT Dispatch Control Center</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0b1220;
+    color: white;
+}
+
+header {
+    background: #111827;
+    padding: 18px;
+    text-align: center;
+    border-bottom: 2px solid #2563eb;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+.panel {
+    background: #111827;
+    border: 1px solid #1f2937;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+input, select {
+    width: 100%;
+    padding: 8px;
+    margin: 6px 0;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    margin-top: 6px;
+    font-weight: bold;
+}
+
+.btn-blue { background: #2563eb; color: white; }
+.btn-red { background: #dc2626; color: white; }
+.btn-green { background: #16a34a; color: white; }
+
+.small {
+    font-size: 13px;
+    opacity: 0.8;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>RRT DISPATCH CONTROL CENTER</h1>
+<div class="small">Live Network Operations Interface</div>
+</header>
+
+<div class="grid">
+
+<!-- ADD SERVICE -->
+<div class="panel">
+<h3>Add Departure</h3>
+
+<input id="route" placeholder="Route (1,2,3)">
+<input id="dest" placeholder="Destination">
+<input id="time" placeholder="Minutes">
+
+<select id="status">
+    <option>On Time</option>
+    <option>Boarding</option>
+    <option>Delayed</option>
+</select>
+
+<button class="btn-blue" onclick="add()">Add Departure</button>
+</div>
+
+<!-- SYSTEM CONTROL -->
+<div class="panel">
+<h3>System Status Level</h3>
+
+<button class="btn-green" onclick="setLevel('green')">Normal Service</button>
+<button class="btn-blue" onclick="setLevel('yellow')">Minor Delays</button>
+<button class="btn-red" onclick="setLevel('red')">Major Disruption</button>
+
+<p class="small">Controls global alert banner across all pages</p>
+</div>
+
+<!-- ANNOUNCEMENT -->
+<div class="panel">
+<h3>Broadcast Announcement</h3>
+
+<input id="msg" placeholder="Message...">
+<button class="btn-blue" onclick="announce()">Broadcast</button>
+</div>
+
+<!-- CURRENT DATA -->
+<div class="panel">
+<h3>Live Network Data</h3>
+<div id="list" class="small"></div>
+</div>
+
+</div>
+
+<script>
+let data = JSON.parse(localStorage.getItem("departures") || "[]");
+
+function save() {
+    localStorage.setItem("departures", JSON.stringify(data));
+}
+
+function add() {
+    data.push({
+        route: route.value,
+        dest: dest.value,
+        time: time.value,
+        status: status.value
+    });
+
+    save();
+    render();
+}
+
+function render() {
+    list.innerHTML = data.map(d =>
+        `${d.route} → ${d.dest} (${d.time} min) [${d.status}]`
+    ).join("<br>");
+}
+
+function setLevel(level) {
+    localStorage.setItem("alertLevel", level);
+}
+
+function announce() {
+    localStorage.setItem("announcement", msg.value);
+    alert("Broadcast sent");
+}
+
+render();
+</script>
+
+</body>
+</html>
