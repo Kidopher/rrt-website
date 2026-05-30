@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>RRT Admin Panel</title>
+
+<style>
+body {
+    font-family: Arial;
+    margin: 0;
+    background: #f3f4f6;
+}
+
+header {
+    background: #111827;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+input, select {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0 10px;
+}
+
+button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+.item {
+    border-bottom: 1px solid #eee;
+    padding: 8px 0;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>RRT Admin Panel</h1>
+</header>
+
+<div class="container">
+
+<h3>Add Departure</h3>
+
+<input id="route" placeholder="Route (e.g. 1)">
+<input id="dest" placeholder="Destination (e.g. Downtown Loop)">
+<input id="time" placeholder="Minutes (e.g. 5)">
+
+<select id="status">
+    <option>On Time</option>
+    <option>Boarding</option>
+    <option>Delayed</option>
+</select>
+
+<button onclick="addDeparture()">Add</button>
+
+<h3>Current Departures</h3>
+<div id="list"></div>
+
+</div>
+
+<script>
+let data = JSON.parse(localStorage.getItem("departures") || "[]");
+
+function render() {
+    let list = document.getElementById("list");
+    list.innerHTML = "";
+    
+    data.forEach((d, i) => {
+        list.innerHTML += `
+        <div class="item">
+            ${d.route} → ${d.dest} (${d.time} min) [${d.status}]
+        </div>`;
+    });
+
+    localStorage.setItem("departures", JSON.stringify(data));
+}
+
+function addDeparture() {
+    data.push({
+        route: document.getElementById("route").value,
+        dest: document.getElementById("dest").value,
+        time: document.getElementById("time").value,
+        status: document.getElementById("status").value
+    });
+
+    render();
+}
+
+render();
+</script>
+
+</body>
+</html>
