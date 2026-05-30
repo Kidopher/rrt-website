@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>RRT - Home</title>
+<title>RRT Transit Portal</title>
 
 <style>
 body {
@@ -11,54 +11,88 @@ body {
     background: #eef2f7;
 }
 
+/* SYSTEM STATUS BAR */
 .topbar {
     background: #111827;
     color: white;
-    padding: 6px 15px;
-    font-size: 12px;
+    padding: 8px 16px;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
 }
 
+/* HEADER */
 header {
-    background: #1d4ed8;
+    background: linear-gradient(90deg, #1d4ed8, #2563eb);
     color: white;
-    padding: 20px;
-    text-align: center;
+    padding: 25px 20px;
 }
 
-nav {
+header h1 {
+    margin: 0;
+}
+
+header p {
+    margin: 5px 0 0;
+    opacity: 0.9;
+}
+
+/* QUICK ACTIONS */
+.actions {
+    display: flex;
+    gap: 10px;
+    padding: 15px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.btn {
+    flex: 1;
     background: white;
+    border: 1px solid #ddd;
+    padding: 12px;
     text-align: center;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-}
-
-nav a {
-    margin: 0 10px;
+    border-radius: 6px;
     text-decoration: none;
     color: #1d4ed8;
     font-weight: bold;
-    padding: 6px 10px;
-    border-radius: 4px;
 }
 
-nav a:hover {
+.btn:hover {
     background: #e0e7ff;
 }
 
+/* MAIN GRID */
 .container {
     max-width: 900px;
-    margin: 20px auto;
-    padding: 10px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 15px;
+    padding: 15px;
 }
 
+/* CARDS */
 .card {
     background: white;
     padding: 15px;
-    margin-bottom: 15px;
+    border-radius: 6px;
     border: 1px solid #ddd;
-    border-radius: 5px;
 }
 
+.card h2 {
+    margin-top: 0;
+}
+
+/* ALERT STRIP */
+.alertbar {
+    background: #f59e0b;
+    color: black;
+    padding: 10px 15px;
+    font-size: 13px;
+}
+
+/* FOOTER */
 footer {
     text-align: center;
     padding: 15px;
@@ -71,36 +105,44 @@ footer {
 <body>
 
 <div class="topbar">
-RRT System Status: Normal Service
+<span>RRT Transit Portal</span>
+<span>System Status: Normal</span>
 </div>
 
 <header>
 <h1>Riverbend Regional Transit</h1>
-<p>Official Transit System</p>
+<p>Plan your trip across the region</p>
 </header>
 
-<nav>
-<a href="index.html">Home</a>
-<a href="routes.html">Routes</a>
-<a href="alerts.html">Service Alerts</a>
-</nav>
+<div class="alertbar">
+No active disruptions across the network.
+</div>
+
+<div class="actions">
+<a class="btn" href="routes.html">View Routes</a>
+<a class="btn" href="alerts.html">Service Alerts</a>
+<a class="btn" href="#">Trip Planner (soon)</a>
+</div>
 
 <div class="container">
 
 <div class="card">
-<h2>Welcome</h2>
-<p>Plan trips and view system information across the RRT network.</p>
+<h2>Live Network Info</h2>
+<p>All routes operating normally.</p>
+<p>Peak service frequency active.</p>
 </div>
 
 <div class="card">
-<h2>System Status</h2>
-<p>All routes operating normally.</p>
+<h2>Quick Stats</h2>
+<p>🚍 Routes: 3 active</p>
+<p>🕒 Service: 5:00 AM – 1:00 AM</p>
+<p>📍 Region: Riverbend</p>
 </div>
 
 </div>
 
 <footer>
-© 2026 Riverbend Regional Transit
+© 2026 Riverbend Regional Transit • System Portal
 </footer>
 
 </body>
