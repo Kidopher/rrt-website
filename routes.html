@@ -1,90 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>RRT Routes</title>
+<title>Routes</title>
 
 <style>
-body { margin: 0; font-family: Arial; background: #eef2f7; }
-
-.topbar {
-    background: #111827;
-    color: white;
-    padding: 6px 15px;
-    font-size: 12px;
-}
+body { margin:0; font-family:Arial; background:#f3f4f6; }
 
 header {
-    background: #1d4ed8;
-    color: white;
-    padding: 20px;
-    text-align: center;
+    background:#0039a6;
+    color:white;
+    padding:20px;
+    text-align:center;
 }
 
 nav {
-    background: white;
-    text-align: center;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
+    background:white;
+    text-align:center;
+    padding:10px;
 }
 
 nav a {
-    margin: 0 10px;
-    text-decoration: none;
-    color: #1d4ed8;
-    font-weight: bold;
-    padding: 6px 10px;
-    border-radius: 4px;
-}
-
-nav a:hover {
-    background: #e0e7ff;
-}
-
-.container {
-    max-width: 900px;
-    margin: 20px auto;
-    padding: 10px;
+    margin:0 10px;
+    text-decoration:none;
+    color:#0039a6;
+    font-weight:bold;
 }
 
 .card {
-    background: white;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    max-width:800px;
+    margin:15px auto;
+    background:white;
+    padding:15px;
+    border-radius:10px;
 }
 
-.route {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    border-bottom: 1px solid #eee;
+a.route {
+    display:block;
+    padding:10px;
+    border-bottom:1px solid #eee;
+    text-decoration:none;
+    color:#0039a6;
 }
 </style>
 </head>
 
 <body>
 
-<div class="topbar">RRT Routes System</div>
-
-<header>
-<h1>Routes</h1>
-<p>Network Overview</p>
-</header>
+<header><h1>Routes</h1></header>
 
 <nav>
 <a href="index.html">Home</a>
 <a href="routes.html">Routes</a>
-<a href="alerts.html">Service Alerts</a>
+<a href="alerts.html">Alerts</a>
+<a href="map.html">Map</a>
 </nav>
 
-<div class="container">
-
 <div class="card">
-<div class="route"><span>Route 1</span><span>Downtown Loop</span></div>
-<div class="route"><span>Route 2</span><span>Riverside Express</span></div>
-<div class="route"><span>Route 3</span><span>North Connector</span></div>
-</div>
+
+<a class="route" href="route1.html">Route 1 — Downtown Loop</a>
+<a class="route" href="route2.html">Route 2 — Riverside Express</a>
+<a class="route" href="route3.html">Route 3 — North Connector</a>
 
 </div>
 
